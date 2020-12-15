@@ -8,28 +8,25 @@ $(document).ready(function() {
 
         $.get("/api/user_data").then(function(data) {
             console.log(data);
+            let equipmentSerialID = data.equipment;
+            for (let i = 0; i < inputs.length; i++) {
+                if ($(inputs[i]).is(":checked")) {
+                    equipmentSerialID += "-" + $(inputs[i]).val();
+                }
+            }
+            console.log(equipmentSerialID);
+            data.equipment = equipmentSerialID;
+            updateUser(data);
         });
-
-        // for (let i = 0; i < inputs.length; i++) {
-        //     if ($(inputs[i]).is(":checked")) {
-        //         equipmentSerialID += "-" + $(inputs[i]).val();
-        //     }
-        // }
-
-        // const userData = {
-        //     equipment: equipmentSerialID
-        // };
-
-        // updateUser(userData.equipment);
     });
 
-    // function updateUser(equipment) {
-    //     $.ajax({
-    //         url: "/api/user_data",
-    //         data: equipment,
-    //         method: "PUT"
-    //     }).then(() => {
-    //         redirect("/")
-    //     });
-    // }
+    function updateUser(request) {
+        $.ajax({
+            url: "/api/user_data",
+            data: request,
+            method: "PUT"
+        }).then(() => {
+            window.location.replace("/home");
+        });
+    }
 });

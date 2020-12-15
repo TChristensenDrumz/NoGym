@@ -52,12 +52,13 @@ module.exports = function(app) {
     app.put("/api/user_data", function(req, res) {
         db.User.update({
             equipment: req.body.equipment,
-        }, {
+        }, 
+        {
             where: {
                 id: req.body.id
             }
-        }).then(function(dbUser) {
-            res.json(dbUser);
+        }).then(function(user) {
+            res.json(user);
         });
     })
 };
