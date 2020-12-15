@@ -1,7 +1,6 @@
 $(document).ready(function() {
     const inputs = $("input[type='checkbox']");
     const submit = $("#submit");
-    let equipmentSerialID = "";
 
     submit.on("click", function(event) {
         event.preventDefault();
