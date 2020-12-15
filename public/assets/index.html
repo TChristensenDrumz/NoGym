@@ -5,71 +5,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>Document</title>
+    <link href="/public/assets/css/style.css" rel="stylesheet">
+    <title>NoGym Home</title>
 </head>
 
 <body>
-    <!-- This file to be renamed index.handlebars -->
-    <h1 style="text-align:center">NoGym!</h1>
+    <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <!-- Logo Image -->
+                <img src="https://res.cloudinary.com/mhmd/image/upload/v1557368579/logo_iqjuay.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+                <!-- Logo Text -->
+                <span class="font-weight-bold">NoGym</span>
+            </a>
 
-    <h2 style="text-align:center">Welcome To Your Personalized Home Workout!</h2>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 
-
-    </h3 class="log-out"><a href="/logout">Log Out</a></h3>
-
-    </h3 class="updateGym"><a href="/environment">Update Gym</a></h3>
-
-    </h3 class="generateRoutine"><a href="/routine">Generate Routine</a></h3>
-
-    <!--this is to create a new group -->
-    <h2> Create a Group</h2>
-    <form class="create-form">
-        <!-- group owner input -->
-        <div class="form-group">
-            <label for="group">Group Owner:</label>
-            <input type="text" id="owner" name="name">
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
+                    <li class="nav-item"><a href="/environment" class="nav-link">Update Gym</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Join a Group</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- group name input  -->
-        <div class="form-group">
-            <label for="group">Group Name:</label>
-            <input type="text" id="group" name="name">
+    </nav>
+
+
+
+    <div class="container">
+        <!-- Top of the page - header  -->
+
+        <h1 style="text-align:center">Welcome To Your Personalized Home Workout!</h1>
+        <p style="text-align:center"> </p>
+
+
+        <!--Card to create a new group -->
+        <div class="container">
+            <div class="row my-12">
+                <div class="card card col-sm-6">
+                    <h5 class="card-header">Create your own group and invite friends to join your group workout!</h5>
+                    <div class="card-body">
+                        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                        <form class="create-form ">
+                            <!-- group owner input -->
+                            <div class="form-group ">
+                                <label for="group ">Group Owner:</label>
+                                <input type="text " id="owner " name="name ">
+                            </div>
+                            <!--Break -->
+                            <br>
+                            <!-- group name input  -->
+                            <div class="form-group ">
+                                <label for="group ">Group Name:</label>
+                                <input type="text " id="group " name="name ">
+                            </div>
+                            <!--Break -->
+                            <br>
+                            <a href="#" class="btn btn-primary">Create a Group</a>
+                            <!-- <button type="submit ">Create a Group</button> -->
+                        </form>
+                    </div>
+                </div>
+                <!--Card 2 next to the create group card-->
+
+
+                <div class="card card col-sm-6">
+                    <h5 class="card-header">What are groups?</h5>
+                    <div class="card-body">
+                        <p> Why create a group?</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <button type="submit">Create a Group</button>
-    </form>
+        <!--Break -->
+        <br>
 
-    <!--this is to create a new group -->
-    <h2> View Groups</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Group Name</th>
-                <th scope="col">Ranking</th>
-                <th scope="col">Number of Members</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Killers</td>
-                <td>#3</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>UCLA</td>
-                <td>#2</td>
-                <td>11</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>MKL</td>
-                <td>#1</td>
-                <td>9</td>
-            </tr>
-        </tbody>
-    </table>
+        <!--table that shows groups and rankings -->
+        <h2> View Groups</h2>
+        <table class="table table-striped table-sm ">
+            <div class="card card col-sm-12">
+                <thead>
+                    <tr>
+                        <th scope="col ">#</th>
+                        <th scope="col ">Group Name</th>
+                        <th scope="col ">Ranking</th>
+                        <th scope="col ">Number of Members</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row ">1</th>
+                        <td>Killers</td>
+                        <td>#3</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">2</th>
+                        <td>UCLA</td>
+                        <td>#2</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <th scope="row ">3</th>
+                        <td>MKL</td>
+                        <td>#1</td>
+                        <td>9</td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+    </div>
+
 </body>
 
 </html>
