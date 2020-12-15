@@ -7,7 +7,7 @@ $(document).ready(function() {
 
         $.get("/api/user_data").then(function(data) {
             console.log(data);
-            let equipmentSerialID = data.equipment;
+            let equipmentSerialID = 7;
             for (let i = 0; i < inputs.length; i++) {
                 if ($(inputs[i]).is(":checked")) {
                     equipmentSerialID += "-" + $(inputs[i]).val();
