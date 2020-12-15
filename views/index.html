@@ -1,24 +1,72 @@
-<!-- This file to be renamed index.handlebars -->
-<h1 style="text-align:center">NoGym!</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2 style="text-align:center">Welcome To Your Personalized Home Workout!</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- This file to be renamed index.handlebars -->
+    <h1 style="text-align:center">NoGym!</h1>
+
+    <h2 style="text-align:center">Welcome To Your Personalized Home Workout!</h2>
 
 
-<h2> Create a Group</h2>
-<form class="create-form">
-    <!-- group owner input -->
-    <div class="form-group">
-        <label for="group">Group Owner:</label>
-        <input type="text" id="owner" name="name">
-    </div>
-    <!-- group name input  -->
-    <div class="form-group">
-        <label for="group">Group Name:</label>
-        <input type="text" id="group" name="name">
-    </div>
+    </h3 class="log-in"><a href="/public/assets/login.html">Log-in</a></h3>
 
-    <button type="submit">Create a Group</button>
-</form>
+    <!--this is to create a new group -->
+    <h2> Create a Group</h2>
+    <form class="create-form">
+        <!-- group owner input -->
+        <div class="form-group">
+            <label for="group">Group Owner:</label>
+            <input type="text" id="owner" name="name">
+        </div>
+        <!-- group name input  -->
+        <div class="form-group">
+            <label for="group">Group Name:</label>
+            <input type="text" id="group" name="name">
+        </div>
 
-<h2> View Groups</h2>
-<table class="view-groups">
+        <button type="submit">Create a Group</button>
+    </form>
+
+    <!--this is to create a new group -->
+    <h2> View Groups</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Group Name</th>
+                <th scope="col">Ranking</th>
+                <th scope="col">Number of Members</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Killers</td>
+                <td>#3</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>UCLA</td>
+                <td>#2</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>MKL</td>
+                <td>#1</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
