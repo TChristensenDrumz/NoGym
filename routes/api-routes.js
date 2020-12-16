@@ -34,17 +34,25 @@ module.exports = function(app) {
 
     // Route for getting some data about our user to be used client side
     app.get("/api/user_data", function(req, res) {
+        console.log(req.user)
         if (!req.user) {
             // The user is not logged in, send back an empty object
             res.json({});
         } else {
-            // Otherwise send back the user's email and id
-            // Sending back a password, even a hashed password, isn't a good idea
-            res.json({
-                id: req.user.id,
-                email: req.user.email,
-                equipment: req.user.equipment
+            db.User.findOne({
+                where: {
+                    id: req.user.id
+                },
+            }).then(function(data) {
+                res.json(
+                    data
+                    // equipment: data.equipment
+                    // id: data.id,
+                    // email: data.email,
+                    // equipment: data.equipment
+                );
             });
+            // instead of grabbing logged in user, go to the database where user's id = id, then grab his info and res.json that information to the front-end
         }
     });
 
