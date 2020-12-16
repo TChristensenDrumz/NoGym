@@ -6,6 +6,8 @@ $(document).ready(function() {
     });
 
     function getRoutine(data) {
+        console.log(data);
+
         const serial = data.equipment;
         const equipment = serial.split("-").filter(element => element.length > 0);
         let urlParams = "";
