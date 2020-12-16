@@ -56,8 +56,8 @@ module.exports = function(app) {
             where: {
                 id: req.body.id
             }
-        }).then(function(dbUser) {
-            res.json(dbUser);
+        }).then(function(user) {
+            res.json(user);
         });
     })
 };
