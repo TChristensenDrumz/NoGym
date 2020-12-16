@@ -14,7 +14,7 @@ $(document).ready(function() {
             urlParams += "&equipment=" + equipment[i];
         }
 
-        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
+        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=40" + urlParams;
 
         $.ajax({
             url: queryURL,
