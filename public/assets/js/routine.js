@@ -5,17 +5,16 @@ $(document).ready(function() {
         getRoutine(data);
     });
 
-
     function getRoutine(data) {
         const serial = data.equipment;
-        const equipment = serial.split("-");
+        const equipment = serial.split("-").filter(element => element.length > 0);
         let urlParams = "";
 
         for (let i = 0; i < equipment.length; i++) {
             urlParams += "&equipment=" + equipment[i];
         }
 
-        var queryURL = "https://wger.de/api/v2/exercise/?language=2" + urlParams;
+        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
 
         $.ajax({
             url: queryURL,
@@ -24,19 +23,22 @@ $(document).ready(function() {
         }).then(function(res) {
             const results = res.results;
             console.log(res);
-            console.log(results.name);
-            console.log(results.description);
-            console.log(results.category);
+            console.log(results);
+            console.log(results[0].name);
+            console.log(results[0].description);
+            console.log(results[0].category);
+            console.log(results.length);
+
             for (let i = 0; i < results.length; i++) {
-                const name = results[i].name;
-                const description = results[i].description;
-                const category = results[i].category;
+                let name = results[i].name;
+                let description = results[i].description;
+                let category = results[i].category;
 
-                const div = $("<div>")
+                let div = $("<div>")
 
-                const divName = $("<div>").text(name)
-                const divDescription = $("<div>").text(description)
-                const divCategory = $("<div>").text(category)
+                let divName = $("<div>").text(name)
+                let divDescription = $("<p>").html(description)
+                let divCategory = $("<div>").text(category)
 
                 div.append(divName)
                 div.append(divDescription)
