@@ -1,70 +1,99 @@
 $(document).ready(function() {
     const routine = $("#virtualgym");
+    const timerSent = $("#timerSent");
+    let workout = 0;
+    let set = 0;
+    let rest = 0;
 
     $.get("/api/user_data").then(function(data) {
-        getRoutine(data);
+        virtualGym(data);
     });
 
-    function getRoutine(data) {
+    async function virtualGym(data) {
         const serial = data.equipment;
         const equipment = serial.split("-").filter(element => element.length > 0);
         let urlParams = "";
-
+    
         for (let i = 0; i < equipment.length; i++) {
             urlParams += "&equipment=" + equipment[i];
         }
-
+    
         var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
 
-        $.ajax({
+        const res = await $.ajax({
             url: queryURL,
             method: "GET",
             Authorization: "b848c6ad024b1c40f59e4da17743e3a1c17d613e"
-        }).then(function(res) {
-            const results = res.results;
+        });
 
-            for (let i = 0; i < results.length; i++) {
-                let name = results[i].name;
-                let description = results[i].description;
-                let category = results[i].category;
+        const results = res.results;
 
-                let nameNoSpaces = name.trim().split(" ").join("")
+        generateHTML(results, workout);
 
-                let div = $("<div>")
-                let img = $("<img>")
-                img.attr('src', "./images/gif/" + nameNoSpaces + ".gif");
-                img.attr('width', "250px")
-                img.appendTo(div);
+        function generateHTML(data, i) {
+            if(workout < data.length){
+                const name = data[i].name;
+                const description = data[i].description;
+                const category = data[i].category;
+                const nameNoSpaces = name.trim().split(" ").join("");
+                 
+                const divName = $("<div>").text(name)
+                const divDescription = $("<p>").html(description)
+                const divCategory = $("<div>").text(category)
 
-                let divName = $("<div>").text(name)
-                let divDescription = $("<p>").html(description)
-                let divCategory = $("<div>").text(category)
-                startExercise(div, divName, divDescription, divCategory);
-            }
+                const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                const imgDiv = $("<div>");
 
-            //Add Timer function
-            async function startExercise(div, divName, divDescription, divCategory) {
-                const timerSent = $("#timerSent")
-                displayExercise(div, divName, divDescription, divCategory);
-                let timer = 20;
-                var timerInterval = setInterval(function() {
-                    timer--;
-                    timerSent.text(timer + " seconds left");
-                    if (timer <= 0) {
-                        clearInterval(timerInterval);
-                        //Clear current exercise
-                        routine.text("");
-                    }
-                }, 1000);
-            }
+                img.appendTo(imgDiv);
 
-            //Append
-            function displayExercise(div, divName, divDescription, divCategory) {
-                div.append(divName)
-                div.append(divDescription)
-                div.append(divCategory)
+                const div = $("<div>")
+            
+                div.append(divName);
+                div.append(divDescription);
+                div.append(img);
+                div.append(divCategory);
+            
                 routine.append(div);
+    
+                workoutSet();
             }
-        })
-    }
+        }
+        
+        function workoutSet() {
+            let timer = 21;
+            const timerInterval = setInterval(function() {
+                timer--;
+                timerSent.text("Workout " + timer + " seconds left");
+                if (timer <= 0) {
+                    clearInterval(timerInterval);
+                    if(set < 3){
+                        set++;
+                        workoutRest();
+                    }
+                }
+            }, 1000);
+        }
+        
+        function workoutRest() {
+            let timer = 11;
+            const timerInterval = setInterval(function() {
+                timer--;
+                timerSent.text("Rest " + timer + " seconds left");
+                if(timer <= 0) {
+                    clearInterval(timerInterval);
+                    if(rest < 2) {
+                        rest++;
+                        workoutSet();
+                    }
+                    else {
+                        set = 0;
+                        rest = 0;
+                        workout++;
+                        routine.text("");
+                        generateHTML(results, workout);
+                    }
+                }
+            }, 1000);
+        } 
+    }  
 });
