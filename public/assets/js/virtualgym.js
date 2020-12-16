@@ -35,15 +35,22 @@ $(document).ready(function() {
                 const name = data[i].name;
                 const description = data[i].description;
                 const category = data[i].category;
-            
-                const div = $("<div>")
-            
+                const nameNoSpaces = name.trim().split(" ").join("");
+                 
                 const divName = $("<div>").text(name)
                 const divDescription = $("<p>").html(description)
                 const divCategory = $("<div>").text(category)
+
+                const img = $("<img>");
+                const imgDiv = $("<div>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+
+                img.appendTo(imgDiv);
+
+                const div = $("<div>");
             
                 div.append(divName);
                 div.append(divDescription);
+                div.append(img);
                 div.append(divCategory);
             
                 routine.append(div);

@@ -6,6 +6,8 @@ $(document).ready(function() {
     });
 
     function getRoutine(data) {
+        console.log(data);
+
         const serial = data.equipment;
         const equipment = serial.split("-").filter(element => element.length > 0);
         let urlParams = "";
@@ -14,7 +16,7 @@ $(document).ready(function() {
             urlParams += "&equipment=" + equipment[i];
         }
 
-        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
+        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=40" + urlParams;
 
         $.ajax({
             url: queryURL,
