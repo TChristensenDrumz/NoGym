@@ -41,12 +41,12 @@ $(document).ready(function() {
                 const divDescription = $("<p>").html(description)
                 const divCategory = $("<div>").text(category)
 
-                const img = $("<img>");
-                const imgDiv = $("<div>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                const imgDiv = $("<div>");
 
                 img.appendTo(imgDiv);
 
-                const div = $("<div>");
+                const div = $("<div>")
             
                 div.append(divName);
                 div.append(divDescription);
