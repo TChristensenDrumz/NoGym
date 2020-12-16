@@ -28,7 +28,13 @@ $(document).ready(function() {
                 let description = results[i].description;
                 let category = results[i].category;
 
+                let nameNoSpaces = name.trim().split(" ").join("")
+
                 let div = $("<div>")
+                let img = $("<img>")
+                img.attr('src', "./images/gif/" + nameNoSpaces + ".gif");
+                img.attr('width', "250px")
+                img.appendTo(div);
 
                 let divName = $("<div>").text(name)
                 let divDescription = $("<p>").html(description)
