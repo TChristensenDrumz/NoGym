@@ -1,6 +1,9 @@
 $(document).ready(function() {
     const routine = $("#virtualgym");
     const timerSent = $("#timerSent");
+    let workout = 0;
+    let set = 0;
+    let rest = 0;
 
     $.get("/api/user_data").then(function(data) {
         virtualGym(data);
@@ -16,67 +19,74 @@ $(document).ready(function() {
         }
     
         var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
-    
-        $.ajax({
+
+        const res = await $.ajax({
             url: queryURL,
             method: "GET",
             Authorization: "b848c6ad024b1c40f59e4da17743e3a1c17d613e"
-        }).then(async function(res) {
-            const results = res.results;
+        });
+
+        const results = res.results;
+
+        generateHTML(results, workout);
+
+        function generateHTML(data, i) {
+            if(workout < data.length){
+                const name = data[i].name;
+                const description = data[i].description;
+                const category = data[i].category;
+            
+                const div = $("<div>")
+            
+                const divName = $("<div>").text(name)
+                const divDescription = $("<p>").html(description)
+                const divCategory = $("<div>").text(category)
+            
+                div.append(divName);
+                div.append(divDescription);
+                div.append(divCategory);
+            
+                routine.append(div);
     
-            for(let i = 0; i < results.length; i++) {
-                const workout = await generateHTML(results, i);
-                routine.append(workout);
-                for(let j = 0; j < 3; j++) {
-                    const set = await workoutSet();
-                    if(j < 2) {
-                        const rest = await workoutRest();
+                workoutSet();
+            }
+        }
+        
+        function workoutSet() {
+            let timer = 21;
+            const timerInterval = setInterval(function() {
+                timer--;
+                timerSent.text("Workout " + timer + " seconds left");
+                if (timer <= 0) {
+                    clearInterval(timerInterval);
+                    if(set < 3){
+                        set++;
+                        workoutRest();
                     }
                 }
-                routine.text("");
-            }
-        })
-    }
-    
-    function generateHTML(data, i) {
-        const name = data[i].name;
-        const description = data[i].description;
-        const category = data[i].category;
-    
-        const div = $("<div>")
-    
-        const divName = $("<div>").text(name)
-        const divDescription = $("<p>").html(description)
-        const divCategory = $("<div>").text(category)
-    
-        div.append(divName);
-        div.append(divDescription);
-        div.append(divCategory);
-    
-        return div;
-    }
-    
-    function workoutSet() {
-        let timer = 20;
-        const timerInterval = setInterval(function() {
-            timer--;
-            timerSent.text("Workout " + timer + " seconds left");
-            if (timer <= 0) {
-                clearInterval(timerInterval);
-                return;
-            }
-        }, 1000);
-    }
-    
-    function workoutRest() {
-        let timer = 10;
-        const timerInterval = setInterval(function() {
-            timer--;
-            timerSent.text("Rest " + timer + " seconds left");
-            if (timer <= 0) {
-                clearInterval(timerInterval);
-                return;
-            }
-        }, 1000);
-    }   
+            }, 1000);
+        }
+        
+        function workoutRest() {
+            let timer = 11;
+            const timerInterval = setInterval(function() {
+                timer--;
+                timerSent.text("Rest " + timer + " seconds left");
+                if(timer <= 0) {
+                    clearInterval(timerInterval);
+                    if(rest < 2) {
+                        rest++;
+                        workoutSet();
+                    }
+                    else {
+                        set = 0;
+                        rest = 0;
+                        workout++;
+                        routine.text("");
+                        generateHTML(results, workout);
+                    }
+                }
+            }, 1000);
+        } 
+    }  
 });
