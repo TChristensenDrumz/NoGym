@@ -1,7 +1,11 @@
 {
     "development": {
         "username": "root",
+<<<<<<< HEAD
         "password": "password",
+=======
+        "password": "mySQLpassword2020",
+>>>>>>> 4a6b63bc6e60902383fdcf96f68d5231efa2aa13
         "database": "NoGym",
         "host": "127.0.0.1",
         "dialect": "mysql"
