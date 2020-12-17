@@ -24,8 +24,7 @@ $(document).ready(function() {
             for(let i = 0; i < 4; i++) {
                 const random = Math.floor(Math.random() * warmup[0].length);
                 routine.push(warmup[0][random]);
-                console.log(warmup[0].splice(random, random + 1));
-                console.log(warmup);
+                warmup[0].splice(random, random + 1);
             }
         
             console.log(routine);
@@ -51,10 +50,12 @@ $(document).ready(function() {
                     Authorization: "b848c6ad024b1c40f59e4da17743e3a1c17d613e"
                 });
         
-                const results = res.results;
+                let results = res.results;
 
                 for(let i = 0; i < 8; i++) {
-                    routine.push(results[Math.floor(Math.random() * warmup[0].length)]);
+                    const random = Math.floor(Math.random() * results.length);
+                    routine.push(results[random]);
+                    results = results.filter(element => element.id !== results[random].id);
                 }
         
                 generateHTML(routine, workout);
