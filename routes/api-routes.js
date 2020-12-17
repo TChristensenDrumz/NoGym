@@ -1,6 +1,9 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const caber = require("caber");
+
+const warmup = caber.parse('Jumping Jacks\nWalking Knee Hugs\nArm Circles\nSide Shuffles\nBackpedaling\nLunges\nLeg Swings\nInch Worms\nCrab Walk\nNeck Stretch\nTricep Stretch\nShoulder Stretch\nDynamic Chest\nMid Back Turn\nHip Circles\nToe Touches\nNeck Tilts');
 
 module.exports = function(app) {
     // Using the passport.authenticate middleware with our local strategy.
@@ -56,6 +59,9 @@ module.exports = function(app) {
         }
     });
 
+    app.get("/api/get_warmup", function(req, res) {
+        res.json(warmup);
+    });
     //Route to update user data 
     app.put("/api/user_data", function(req, res) {
         db.User.update({
@@ -67,5 +73,5 @@ module.exports = function(app) {
         }).then(function(user) {
             res.json(user);
         });
-    })
+    });
 };
