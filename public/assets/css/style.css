@@ -1,6 +1,6 @@
 body {
     position: relative;
-    /* height: 100vh; */
+    height: 100vh;
     width: 100%;
     /* align-items: center; */
     /* justify-content: center; */
@@ -22,10 +22,6 @@ form.signup,
 form.login {
     margin-top: 50px;
     font-size: 20px;
-}
-
-.form-group {
-    align-items: left;
 }
 
 h1 {
@@ -60,7 +56,7 @@ h3 {
 }
 
 .specialCard {
-    color: white;
+    padding-top: 15px;
 }
 
 .pageText {
@@ -71,4 +67,9 @@ h3 {
 
 .routine {
     background-color: black;
+}
+
+.btn-info {
+    background-color: rgb(120, 71, 133);
+    color: black;
 }
