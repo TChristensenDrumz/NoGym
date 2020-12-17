@@ -37,7 +37,6 @@ $(document).ready(function() {
                 let category = results[i].category;
 
                 let div = $("<div>")
-
                 let divName = $("<div>").text(name)
                 let divDescription = $("<p>").html(description)
                 let divCategory = $("<div>").text(category)
