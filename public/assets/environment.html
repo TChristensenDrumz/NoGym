@@ -6,21 +6,45 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS - Navbar to the left -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="./css/style.css" rel="stylesheet">
 
     <title>Enviroment</title>
 </head>
 
 <body>
+    <!-- NAVBAR-->
+    <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+        <div class="container">
+
+            <a href="/index" class="navbar-brand">
+                <!-- Logo Image     WHEN LOADED TO SERVER ADD /ASSETS INTO THE PICTURE ROUTE -->
+                <img src="./images/png/ngPurple.png" width="50" alt="" class="d-inline-block align-middle mr-2">
+
+                <!-- Logo Text -->
+                <span class="font-weight-bold">NoGym</span>
+            </a>
+
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+            <!-- Navbar buttons -->
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
+                    <li class="nav-item"><a href="/routine" class="nav-link">All Exercises</a></li>
+                    <li class="nav-item"><a href="/environment" class="nav-link">Update Gym</a></li>
+                    <li class="nav-item"><a href="/virtualgym" class="nav-link">My Virtual Gym</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container ">
         <h1>Let's determine your current workout environment</h1>
 
         <div class="card card col-sm-12">
             <h5 class="card-header">Which of the following do you have available to workout?</h5>
             <div class="card-body">
-
-
 
                 <!-- <strong>Which of the following do you have available to workout?</strong> -->
                 <div class="form-check">
@@ -88,11 +112,11 @@
 
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="default" id="default" value="">
-                    <label class="form-check-label" for="default">
-            None of the above
-            </label>
+                    <label class="form-check-label" for="default">None of the above</label>
                 </div>
 
+                <!--Button -->
+                <br>
                 <button type="button" class="btn btn-primary" id="submit">Submit</button>
             </div>
         </div>
