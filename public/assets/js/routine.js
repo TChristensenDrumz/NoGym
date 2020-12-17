@@ -1,5 +1,10 @@
 $(document).ready(function() {
-    const routine = $("#routine");
+    // const back = $("#12");
+    // const arms = $("#8");
+    // const chest = $("#chest");
+    // const legs = $("#legs");
+    // const abs = $("#abs");
+    // const routine = $("#shoulders");
 
     $.get("/api/user_data").then(function(data) {
         getRoutine(data);
@@ -39,13 +44,26 @@ $(document).ready(function() {
                 let div = $("<div>")
                 let divName = $("<div>").text(name)
                 let divDescription = $("<p>").html(description)
-                let divCategory = $("<div>").text(category)
 
+                const nameNoSpaces = name.trim().split(" ").join("");
+                const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                const imgDiv = $("<div>");
+
+                img.appendTo(imgDiv);
+
+
+                divName.attr("class", "subtitle")
                 div.append(divName)
                 div.append(divDescription)
-                div.append(divCategory)
+                div.append(imgDiv);
+                div.append("_______________________________")
 
-                routine.append(div);
+                if (category === 14) {
+                    category = 9;
+                }
+
+                const bodyPart = $("#" + category)
+                bodyPart.append(div);
             }
         })
     }
