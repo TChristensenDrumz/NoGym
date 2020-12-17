@@ -26,8 +26,7 @@ body::before {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0
+    background: rgba(255, 255, 255, .1)
 }
 
 .navbar {
@@ -78,6 +77,10 @@ h1 {
 h2 {
     color: white;
     text-align: center;
+}
+
+.dev-title {
+    color: black;
 }
 
 h3 {
@@ -147,6 +150,48 @@ h3 {
     overflow: scroll;
 }
 
+
+/* AboutUs Page Styles */
+
+.title {
+    font-size: 4rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.us {   
+    height: auto;       
+    text-align: center;
+    font-size: 1.5rem;    
+    background-color: rgba(255,255,255, .7) !important;
+    color: black;    
+    border-radius: 15px 50px 30px;
+    float: left;
+    width: 35rem;
+    margin: 4rem;  
+}
+
+.card {
+    background-color:transparent;
+    border: 0rem;
+}
+
+.card-img-top {
+    padding: 2%;
+    border-radius: 15px 50px 30px;
+}
+
+.card-text {
+    height: 15rem;
+    font-size: 1.1rem;
+    overflow: auto;
+}
+
+ul {
+    color: #0808c0;
+    font-size: 1.1rem;
+
 .btn-info {
     color: white;
     font-family: 'Padauk', sans-serif;
@@ -154,6 +199,5 @@ h3 {
 }
 
 .bmi {
-    /* position: absolute; */
     padding-top: 2rem;
 }
