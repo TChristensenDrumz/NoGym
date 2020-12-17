@@ -1,99 +1,130 @@
 $(document).ready(function() {
-    const routine = $("#virtualgym");
+    const virtualgym = $("#virtualgym");
     const timerSent = $("#timerSent");
     let workout = 0;
     let set = 0;
     let rest = 0;
 
-    $.get("/api/user_data").then(function(data) {
-        virtualGym(data);
+
+    const warmup = [];
+    const routine = [];
+
+    $.when(
+        $.getJSON('/api/get_warmup')
+    ).done(function(json) {
+        warmup.push(json);
+        console.log(warmup);
     });
 
-    async function virtualGym(data) {
-        const serial = data.equipment;
-        const equipment = serial.split("-").filter(element => element.length > 0);
-        let urlParams = "";
-    
-        for (let i = 0; i < equipment.length; i++) {
-            urlParams += "&equipment=" + equipment[i];
+    function virtualGym() {
+        if(warmup.length === 0) {
+            setTimeout(virtualGym, 1000);
         }
-    
-        var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
-
-        const res = await $.ajax({
-            url: queryURL,
-            method: "GET",
-            Authorization: "b848c6ad024b1c40f59e4da17743e3a1c17d613e"
-        });
-
-        const results = res.results;
-
-        generateHTML(results, workout);
-
-        function generateHTML(data, i) {
-            if(workout < data.length){
-                const name = data[i].name;
-                const description = data[i].description;
-                const category = data[i].category;
-                const nameNoSpaces = name.trim().split(" ").join("");
-                 
-                const divName = $("<div>").text(name)
-                const divDescription = $("<p>").html(description)
-                const divCategory = $("<div>").text(category)
-
-                const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
-                const imgDiv = $("<div>");
-
-                img.appendTo(imgDiv);
-
-                const div = $("<div>")
-            
-                div.append(divName);
-                div.append(divDescription);
-                div.append(img);
-                div.append(divCategory);
-            
-                routine.append(div);
-    
-                workoutSet();
+        else {
+            for(let i = 0; i < 4; i++) {
+                const random = Math.floor(Math.random() * warmup[0].length);
+                routine.push(warmup[0][random]);
+                console.log(warmup[0].splice(random, random + 1));
+                console.log(warmup);
             }
-        }
         
-        function workoutSet() {
-            let timer = 21;
-            const timerInterval = setInterval(function() {
-                timer--;
-                timerSent.text("Workout " + timer + " seconds left");
-                if (timer <= 0) {
-                    clearInterval(timerInterval);
-                    if(set < 3){
-                        set++;
-                        workoutRest();
-                    }
+            console.log(routine);
+        
+            $.get("/api/user_data").then(function(data) {
+                getRoutine(data);
+            });
+        
+            async function getRoutine(data) {
+                const serial = data.equipment;
+                const equipment = serial.split("-").filter(element => element.length > 0);
+                let urlParams = "";
+            
+                for (let i = 0; i < equipment.length; i++) {
+                    urlParams += "&equipment=" + equipment[i];
                 }
-            }, 1000);
-        }
+            
+                var queryURL = "https://wger.de/api/v2/exercise/?language=2&limit=50" + urlParams;
         
-        function workoutRest() {
-            let timer = 11;
-            const timerInterval = setInterval(function() {
-                timer--;
-                timerSent.text("Rest " + timer + " seconds left");
-                if(timer <= 0) {
-                    clearInterval(timerInterval);
-                    if(rest < 2) {
-                        rest++;
+                const res = await $.ajax({
+                    url: queryURL,
+                    method: "GET",
+                    Authorization: "b848c6ad024b1c40f59e4da17743e3a1c17d613e"
+                });
+        
+                const results = res.results;
+
+                for(let i = 0; i < 8; i++) {
+                    routine.push(results[Math.floor(Math.random() * warmup[0].length)]);
+                }
+        
+                generateHTML(routine, workout);
+        
+                function generateHTML(data, i) {
+                    if(workout < data.length){
+                        const div = $("<div>");
+                        
+                        const name = data[i].name;
+                        const divName = $("<div>").text(name);
+                        div.append(divName);
+        
+                        if(data[i].description){
+                            const description = data[i].description;
+                            const divDescription = $("<p>").html(description);
+                            div.append(divDescription);
+                        }
+                        
+                        const nameNoSpaces = name.trim().split(" ").join("");
+                        const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                        const imgDiv = $("<div>");
+        
+                        img.appendTo(imgDiv);
+                        div.append(imgDiv);
+        
+                        virtualgym.append(div);
+            
                         workoutSet();
                     }
-                    else {
-                        set = 0;
-                        rest = 0;
-                        workout++;
-                        routine.text("");
-                        generateHTML(results, workout);
-                    }
                 }
-            }, 1000);
-        } 
-    }  
+                
+                function workoutSet() {
+                    let timer = 21;
+                    const timerInterval = setInterval(function() {
+                        timer--;
+                        timerSent.text("Workout " + timer + " seconds left");
+                        if (timer <= 0) {
+                            clearInterval(timerInterval);
+                            if(set < 3){
+                                set++;
+                                workoutRest();
+                            }
+                        }
+                    }, 1000);
+                }
+                
+                function workoutRest() {
+                    let timer = 11;
+                    const timerInterval = setInterval(function() {
+                        timer--;
+                        timerSent.text("Rest " + timer + " seconds left");
+                        if(timer <= 0) {
+                            clearInterval(timerInterval);
+                            if(rest < 2) {
+                                rest++;
+                                workoutSet();
+                            }
+                            else {
+                                set = 0;
+                                rest = 0;
+                                workout++;
+                                virtualgym.text("");
+                                generateHTML(routine, workout);
+                            }
+                        }
+                    }, 1000);
+                } 
+            }
+        }
+    }
+
+    virtualGym();
 });
