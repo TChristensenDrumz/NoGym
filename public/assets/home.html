@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=McLaren&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- Bootstrap CSS - Navbar to the left -->
@@ -18,7 +20,7 @@
 
     <!-- NAVBAR-->
     <nav class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
-        <div class="container">
+        <div class="container" id="navbar">
 
             <a href="/index" class="navbar-brand">
                 <!-- Logo Image     WHEN LOADED TO SERVER ADD /ASSETS INTO THE PICTURE ROUTE -->
@@ -45,35 +47,41 @@
 
     <div class="container">
         <!-- Top of the page - header  -->
-        <div class="specialCard">
-            <div class="row my-12">
-                <div class="card card col-sm-8">
-                    <h5 class="card-header">Welcome To Your Personalized Home Workout!</h5>
-                    <div class="card-body">
-                        <p>
-                            <B>We are here to provide you with a virtual gym that is tailored to you and your current workout environment!</B>
-                        </p>
-                        <p>Here's what you can expect from NoGym:</p>
-                        <p>&#8692
-                            <B>All Exercises:</B> An extensive list of exercises you can do from home with or without equipment.</p>
-                        <p>&#8692
-                            <B>Virtual gym:</B> Your own personalized workout routine that fits within your current work environment and takes into consideration whether or not you have workout equipment.</p>
-                        <p>&#8692
-                            <B>Update Gym:</B> You are able to update your gym by changing the equipment options that you want to incorporate into your routine.</p>
-                        <p>We hope you will find NoGym useful in your quest for a healthier you.</p>
-                        </p>
+        <div class="row">
+            <h5 class="card-header">Welcome To Your Personalized Home Workout!</h5>
+            <div class="bmi col-md-4">
+                <!-- CDC calculator -->
+                <iframe src="https://www.cdc.gov/healthyweight/assessing/adult-widget/iframe.html" frameborder="0" style="border: none;" width="170" height="395">Please upgrade to web browser that supports iframes to see this CDC widget.</iframe>
+            </div>
+            <div class="specialCard col-md-8">
+                <div class="row my-12">
+
+                    <div class="card card col-sm-8">
+                        <div class="card-body">
+                            <p>
+                                <B>We are here to provide you with a virtual gym that is tailored to you and your current workout environment!</B>
+                            </p>
+                            <p>Here's what you can expect from NoGym:</p>
+                            <p>&#8692
+                                <B><a href="/routine">All Exercises:</a></B> An extensive list of exercises you can do from home with or without equipment.</p>
+                            <p>&#8692
+                                <B><a href="/virtualgym">Virtual Gym:</a></B> Your own personalized workout routine that fits within your current work environment and takes into consideration whether or not you have workout equipment.</p>
+                            <p>&#8692
+                                <B><a href="/environment">Update Gym:</a></B> You are able to update your gym by changing the equipment options that you want to incorporate into your routine.</p>
+                            <p>We hope you will find NoGym useful in your quest for a healthier you.</p>
+                            </p>
+
+                        </div>
+
 
                     </div>
-
-
                 </div>
+
             </div>
+
         </div>
 
-        <div class="bmi">
-            <!-- CDC calculator -->
-            <iframe src="https://www.cdc.gov/healthyweight/assessing/adult-widget/iframe.html" frameborder="0" style="border: none;" width="170" height="395">Please upgrade to web browser that supports iframes to see this CDC widget.</iframe>
-        </div>
+
 
 
     </div>
