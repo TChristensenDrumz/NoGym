@@ -153,10 +153,6 @@ h3 {
     margin-top: 0px;
 }
 
-.specialCard {
-    padding-top: 2rem;
-}
-
 .card-body {
     background-color: white;
     box-shadow: 2px 2px 10px 2px #050505f3;
@@ -234,12 +230,16 @@ h3 {
 .musclegroup {
     height: 400px;
     color: white;
-    background-color: #48c5ebe7;
+    background-color: #8cc6d1cc;
     border-radius: 15px;
     box-shadow: 3px 2px 10px 1px black;
     padding: 1.5rem;
     margin: 1.5rem;
     overflow: scroll;
+}
+
+.musclegroup::-webkit-scrollbar {
+    display: none;
 }
 
 

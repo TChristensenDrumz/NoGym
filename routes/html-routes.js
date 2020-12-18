@@ -45,6 +45,10 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/assets/home.html"));
     });
 
+    app.get("/aboutus", isAuthenticated, function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/assets/aboutus.html"));
+    });
+
     app.get("*", function(req, res) {
         res.redirect("/home");
     });
