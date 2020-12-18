@@ -170,6 +170,10 @@ h3 {
     overflow: scroll;
 }
 
+.musclegroup::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* AboutUs Page Styles */
 
