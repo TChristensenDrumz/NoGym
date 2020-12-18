@@ -83,7 +83,7 @@ $(document).ready(function() {
                             vgDesc.append(divDesc);
                         }
 
-                        const nameNoSpaces = name.trim().split(" ").join("");
+                        const nameNoSpaces = name.trim().split(" ").join("").toLowerCase();
                         const img = $("<img>").attr('src', "../images/gif/" + nameNoSpaces + ".gif").attr('width', "500px");
                         divPicture.append(img);
                         vgPicture.append(divPicture);
