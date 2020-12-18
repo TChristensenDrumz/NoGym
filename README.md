@@ -2,19 +2,21 @@
 
 ## Description 
 
-NoGym is a web application that provides a personalized virtual gym based on the user's current workout environment. The web app takes in their input on the workout equipment they have available and produces a personalized routine for them to follow with the equipment that they have at home. 
+NoGym is a web application that provides a personalized virtual gym based on the user's current workout environment. The web app collects the user's input on the workout equipment they have available and produces a personalized routine for them to follow with the equipment that they have at home. 
  
-During the 2020 Covid-19 pandemic many states went into a state of emergency and gyms were closed, leaving gym-goers to workout at home. It was quickly apparent that working out at home did not provide the same satisfaction. We created this app to help people find a workout that fits their 2020 lifestyle. 
+During the Covid-19 pandemic many states went into a state of emergency and gyms were closed, forcing gym-goers to workout at home. It was quickly apparent that working out at home did not provide the same satisfaction. We created this app to help people obtain a workout that fits their 2020 lifestyle and follow a routine that is suited for their environment. 
  
-The user is required to sign up (for free) to begin using the app. Once they’ve logged in, the app will ask them to input their environment by selecting the equipment that they have available to workout with at home. 
+The user is required to sign up (for free) to begin using the app. Once they’ve logged in, the app will ask them to input their environment by selecting the workout equipment that they have available at home. 
  
 After setting up their environment, they can access “All Exercises” which provides a wide array of exercises for each muscle group.They can also go into their “Virtual Gym” where their personalized workout will be available.
  
-From the main page the user is able to determine their BMI (body mass index) and learn about what BMI means. 
+From the main page the user has the option to use a BMI (body mass index) calculator and learn about what BMI means, or use the caloric need calculator to find out how many calories they must consume to reach their desired goal. 
 
 
 ## Features
-If your project has a lot of features, consider adding a heading called "Features" and listing them here.
+* BMI calculator from the CDDC website - https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html <br/>
+
+* Caloric need calculator that can direct the user to a meal-pep service - https://www.mealpro.net/blog/fitness-calculators/#gref
 
 
 ## Table of Contents 
