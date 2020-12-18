@@ -1,11 +1,11 @@
 require("dotenv").config();
-
+ig
 module.exports = {
     "development": {
 
-        "username": "root",
-        "password": "password",
-        "database": "NoGym",
+        "username": process.env.myUsername,
+        "password": process.env.myPassword,
+        "database": process.env.database,
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
