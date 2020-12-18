@@ -63,6 +63,8 @@ $(document).ready(function() {
 
                 function generateHTML(data, i) {
                     if (workout < data.length) {
+                        vgDesc.attr("class", "hide");
+
                         const divName = $("<div>")
                         const divPicture = $("<div>");
                         const divDesc = $("<div>");
@@ -74,6 +76,7 @@ $(document).ready(function() {
                         vgName.append(divName)
 
                         if (data[i].description) {
+                            vgDesc.removeClass("hide");
                             const description = data[i].description;
                             const divDescription = $("<p>").html(description);
                             divDesc.append(divDescription);
