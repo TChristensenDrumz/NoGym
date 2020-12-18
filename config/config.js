@@ -1,7 +1,8 @@
 require("dotenv").config();
-
+ig
 module.exports = {
     "development": {
+
         "username": process.env.myUsername,
         "password": process.env.myPassword,
         "database": process.env.database,
