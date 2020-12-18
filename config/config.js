@@ -1,5 +1,5 @@
 require("dotenv").config();
-ig
+
 module.exports = {
     "development": {
 
