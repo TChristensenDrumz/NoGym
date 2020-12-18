@@ -104,7 +104,7 @@ form.login {
 .intro {
     padding-bottom: 2rem;
     padding-top: 0 !important;
-    background-color: rgba(0,0,0,0) !important;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
 input.form-check-input {
@@ -184,7 +184,7 @@ h3 {
     padding-top: 2rem;
     border-bottom: none;
     margin-top: 0px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .card-body {
@@ -240,6 +240,13 @@ h3 {
 
 #vgDesc::-webkit-scrollbar {
     display: none;
+}
+
+span.navbar-toggler-icon {
+    color: white;
+    background-color: rgb(159, 79, 182);
+    box-shadow: 2px 2px 10px 2px #050505f3 !important;
+    border-radius: 3px;
 }
 
 
