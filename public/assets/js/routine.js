@@ -46,7 +46,7 @@ $(document).ready(function() {
                 let divDescription = $("<p>").html(description)
 
                 const nameNoSpaces = name.trim().split(" ").join("");
-                const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
+                const img = $("<img>").attr('src', "../images/gif/" + nameNoSpaces + ".gif").attr('width', "250px");
                 const imgDiv = $("<div>");
 
                 img.appendTo(imgDiv);
