@@ -84,7 +84,7 @@ $(document).ready(function() {
                         }
 
                         const nameNoSpaces = name.trim().split(" ").join("");
-                        const img = $("<img>").attr('src', "./images/gif/" + nameNoSpaces + ".gif").attr('width', "500px");
+                        const img = $("<img>").attr('src', "../images/gif/" + nameNoSpaces + ".gif").attr('width', "500px");
                         divPicture.append(img);
                         vgPicture.append(divPicture);
 
