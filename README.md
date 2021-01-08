@@ -78,7 +78,7 @@ Three API's were used to build the app: <br />
 * sequelize - https://www.npmjs.com/package/sequelize <br/>
 
 ### Site URL
-The app can be accessed via this address: <!--Address to be entered
+The app can be accessed via this address: https://nogym.herokuapp.com
 
 
 ## License
@@ -94,8 +94,7 @@ tchristensendrumz@gmail.com <br/>
 ajefferson419@yahoo.com<br/>
 
 ## Tests
-<!-- 
-Insert video here -->
+![NoGym](/public/assets/images/gif/nogymtest.gif)
 
 All Rights Reserved.
 
